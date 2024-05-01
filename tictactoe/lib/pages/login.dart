@@ -1,7 +1,7 @@
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:tictactoe/firebase_options.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -37,9 +37,13 @@ class _LoginState extends State<Login> {
         child: SingleChildScrollView(
           padding: const EdgeInsets.all(24),
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              Image.asset('images/logo.png', height: 100),
+              Image.asset(
+                'images/logo.png',
+                height: 100,
+              ),
               const SizedBox(
                 height: 48,
               ),
@@ -50,13 +54,14 @@ class _LoginState extends State<Login> {
                 keyboardType: TextInputType.name,
                 textAlign: TextAlign.center,
                 decoration: InputDecoration(
-                    hintText: 'Enter your player name',
-                    border: OutlineInputBorder(
-                        borderSide: const BorderSide(
-                            color: Colors.blueAccent, width: 1),
-                        borderRadius: BorderRadius.circular(30)),
-                    contentPadding: const EdgeInsets.symmetric(
-                        vertical: 10, horizontal: 20)),
+                  hintText: 'Enter your player name',
+                  border: OutlineInputBorder(
+                      borderSide:
+                          const BorderSide(color: Colors.blueAccent, width: 1),
+                      borderRadius: BorderRadius.circular(30)),
+                  contentPadding:
+                      const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                ),
               ),
               const SizedBox(
                 height: 8,
@@ -86,7 +91,7 @@ class _LoginState extends State<Login> {
                           try {
                             await FirebaseAuth.instance
                                 .signInWithEmailAndPassword(
-                                    email: '$_playername@gmail.com',
+                                    email: '$_playername@tictactoe.com',
                                     password: _password);
                             gotoChallenge();
                           } on FirebaseAuthException catch (e) {
@@ -104,14 +109,17 @@ class _LoginState extends State<Login> {
                           }
                         }
                       : null,
-                  child: const Text('Login')),
-              const SizedBox(height: 8),
+                  child: const Text('Log in')),
+              const SizedBox(
+                height: 8,
+              ),
               TextButton(
-                onPressed: _ready
-                    ? () => Navigator.pushNamed(context, 'register')
-                    : null,
-                child: const Text('New Player Click Here!'),
-              )
+                  onPressed: _ready
+                      ? () {
+                          Navigator.pushNamed(context, 'register');
+                        }
+                      : null,
+                  child: const Text('New player Click Here!')),
             ],
           ),
         ),
