@@ -21,7 +21,8 @@ class MainApp extends StatelessWidget {
       },
       initialRoute: 'login',
       theme: ThemeData(
-          appBarTheme: const AppBarTheme(backgroundColor: Colors.pink),
+          appBarTheme: const AppBarTheme(
+              backgroundColor: Color.fromARGB(255, 236, 134, 214)),
           filledButtonTheme: FilledButtonThemeData(
               style: FilledButton.styleFrom(backgroundColor: Colors.blue))),
     );

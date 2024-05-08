@@ -1,0 +1,9 @@
+name: midterm
+description: "up the mountain"
+publish_to: 'none'
+version: 0.1.0
+
+flutter:
+  uses-material-design: true
+  assets:
+  - bg/bg1.jpg
